@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<title></title>
+</head>
+<body>
+
+	<div class="header" id="nav"">
+		<span id="navText"><a href="#topPage"><img src="pb.png" class="navImg" align="middle"></a></span>
+		<span id="navText"><a href="cv.html">ABOUT</a></span>
+		<span id="navText"><a href="#game">JAVASCRIPT</a></span>
+		<span id="navText"><a href="#googleMap">CONTACT</a></span>
+	</div>
+
+	<div id="topPage">
+		<span><img src="pb.png" class="topPageImg" align="middle"></span>
+		<span id="topPageText"><p>
+			<h3>< span > Introduction < /span ></h3> <br>
+			<span id="topPageFirst">M</span>y name is Katrine Lind, but my friends call me Mira. I’m 20 years old and I live in Aarhus - Denmark. <br><br>
+
+			I first discovered my passion when I was 11 years old, and my sister was having friends over. <br>My duty as her baby-sister was of course to tease her and her friends.<br>I kept deleting what they were writing on their word-document. One of her friends hit CTRL+Z and all lost was now back. <br>Back then I didn’t know what kind of witchcraft this was, but I knew I wanted in.
+		</p></span>
+	</div>
+
+
+	<!-- SNAKE GAME JAVASCRIPT -->
+	<div id="game">
+	<button id="startBtn" onclick="init()"><img src="playbtn.png"></button>
+	<canvas id="myCanvas" width="600" height="550"></canvas>
+	<img src="instructionsSnake.png" class="howToSnake">
+	</div>
+
+
+<div id="googleMap">
+	<span><img id="googleMapPic" src="googleMaps.png" align="middle"></span>
+	<span id="googleMapText"><p>
+		<h3>< span > Contact < /span ></h3> 
+		<ul>
+			<li>📞Phone: +45 25 54 72 01 </li>
+			<li>✉️katrine.mlind@hotmail.com </li>
+			<li>🌍Whatsapp: +45 25 54 72 01 </li>
+		</ul>
+	</p></span>
+</div>
+
+<div class="footer">
+	<span>
+		<ul class="footer">
+			<li class="lifooter">I dont have anything else to show you atm.</li>
+			<li class="lifooter">But I also know how to make a footer if that helps</li>
+		</ul>
+
+	</span>
+</div>
+
+
+
+
+
+<!-- SCRIPT FOR SNAKE -->
+	<script type="text/JAVASCRIPT">
+
+
+//NAVBAR
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("nav");
+
+var sticky = header.offsetTop;
+
+//Adding and removing sticky
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+
+
+	//SNAKE	
+	var canvas;
+	var ctx;
+	var head;
+	var apple;
+	var ball;
+	var dots;
+	var apple_x;
+	var apple_y;
+	var leftDirection = false;
+	var rightDirection = true;
+	var upDirection = false;
+	var downDirection = false;
+	var inGame = true;
+	var score = 0;
+	const DOT_SIZE = 10;
+	const ALL_DOTS = 999;
+	const MAX_RAND = 50;
+	const DELAY = 120;
+	const C_HEIGHT = 550;
+	const C_WIDTH = 600;
+	const LEFT_KEY = 65;
+	const RIGHT_KEY = 68;
+	const UP_KEY = 87;
+	const DOWN_KEY = 83;
+	var x = new Array(ALL_DOTS);
+	var y = new Array(ALL_DOTS);
+	var wall;
+	var wall_y = [];
+	var wall_x = [];
+	var frameCount = 0;
+	const FRAME_COUNT_NEW_LINE = 500;
+	var moveLock = true;
+		
+
+		function bush() {
+			ctx.dra
+		}
+
+ 
+		function doWall() {
+			if (inGame) {
+        for (var i = 0; i < wall_x.length; i++)
+        ctx.drawImage(wall, wall_x[i], wall_y[i]);
+        for (var z = 0; z < dots; z++) {
+            
+            if (z == 0) {
+                ctx.drawImage(head, x[z], y[z]);
+            } else {
+                ctx.drawImage(ball, x[z], y[z]);
+            	}
+        	} 
+   				 } else {
+       			 gameOver();
+    		}
+		}
+
+
+		//Is there collision?
+    function checkWall() {
+        locateWall();
+    for (var i = 0; i < wall_x.length; i++)
+    if ((x[0] == wall_x[i]) && (y[0] == wall_y[i])) {
+        gameOver();
+    }
+}
+
+//Where is the wall?
+    function locateWall() {
+         if (score == 57) {
+            wall_x.push(300,300,300,300,300,300,300,300)
+            wall_y.push(230,240,250,260,270,280,290,300,310,320,)
+}
+            else if (score == 54){
+            wall_x.push(300,300,300,300,);
+            wall_y.push(470,480,490,500,);
+            }
+    
+        else if (score == 51){
+            wall_x.push(300,300,300,300,);
+            wall_y.push(50,60,70,80,);
+            }
+    
+        else if (score == 48){
+            wall_x.push(260,260,260,260,);
+            wall_y.push(330,340,350,360,);
+            }
+    
+        else if (score == 45){
+            wall_x.push(340,340,340,340,);
+            wall_y.push(190,200,210,220,);
+            }
+    
+        else if (score == 42){
+            wall_x.push(340,340,340,340,);
+            wall_y.push(330,340,350,360,);
+            }
+    
+        else if (score == 39){
+            wall_x.push(260,260,260,260,);
+            wall_y.push(190,200,210,220,);
+            }
+    
+        else if (score == 36){
+            wall_x.push(260,270,280,290,300,310,320,330,340,);
+            wall_y.push(370,370,370,370,370,370,370,370,370,);
+            }
+    
+        else if (score == 33){
+            wall_x.push(260,270,280,290,300,310,320,330,340,);
+            wall_y.push(180,180,180,180,180,180,180,180,180,);
+            }
+    
+        else if (score == 30){
+            wall_x.push(470,470,470,470,470,470,470,470,470,470,470,470,470,470,470,470,);
+            wall_y.push(190,200,210,220,230,240,250,260,290,300,310,320,330,340,350,360,);
+            }
+    
+        else if (score == 27){
+            wall_x.push(130,130,130,130,130,130,130,130,130,130,130,130,130,130,130,130,);
+            wall_y.push(190,200,210,220,230,240,250,260,290,300,310,320,330,340,350,360,);
+            }
+    
+        else if (score == 24){
+            wall_x.push(530,530,530,530,530,530,530,);
+            wall_y.push(440,450,460,470,480,490,500,);
+            }
+        else if (score == 21){
+            wall_x.push(470,480,490,500,510,520,530,);
+            wall_y.push(500,500,500,500,500,500,500,);
+            }
+    
+        else if (score == 18){
+            wall_x.push(530,530,530,530,530,530,530,);
+            wall_y.push(50,60,70,80,90,100,110,);
+            }
+        else if (score == 15){
+           wall_x.push(470,480,490,500,510,520,530,);
+            wall_y.push(50,50,50,50,50,50,50,);
+            }
+    
+        else if (score == 12){
+            wall_x.push(50,50,50,50,50,50,50,);
+            wall_y.push(440,450,460,470,480,490,500,);
+            }
+    
+        else if (score == 9){
+            wall_x.push(50,60,70,80,90,100,110,);
+            wall_y.push(500,500,500,500,500,500,500,);
+            }
+    
+        else if (score == 6){
+            wall_x.push(50,50,50,50,50,50,50,);
+            wall_y.push(50,60,70,80,90,100,110,);
+            }
+    
+        else if (score == 3){
+            wall_x.push (50,60,70,80,90,100,110,);
+            wall_y.push(50,50,50,50,50,50,50,);
+            }
+                return;
+    }
+
+    function init() {
+    
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+    startBtn.style.display = 'none';
+    canvas.style.display = 'block';
+    
+    
+    loadImages();
+    createSnake();
+    locateWall();
+    locateApple();
+    setTimeout("gameCycle()", DELAY);
+    
+}
+
+function loadImages() {
+    
+    head = new Image();
+    head.src = 'snakeHead.png';    
+    
+    ball = new Image();
+    ball.src = 'snakeBody.png'; 
+    
+    apple = new Image();
+    apple.src = 'snakePizza.png'; 
+    wall = new Image();
+    wall.src ='snakeBush.png';
+}
+
+//How does the snake look, when game=start?
+function createSnake() {
+    dots = 3;
+    for (var z = 0; z < dots; z++) {
+        x[z] = 50 - z * 10;
+        y[z] = 50;
+    }
+}
+
+function doDrawing() {
+           ctx.clearRect(0, 0, C_WIDTH, C_HEIGHT);
+    
+    if (inGame) {
+        ctx.drawImage(apple, apple_x, apple_y);
+        for (var z = 0; z < dots; z++) {
+            
+            if (z == 0) {
+                ctx.drawImage(head, x[z], y[z]);
+            } else {
+                ctx.drawImage(ball, x[z], y[z]);
+            }
+        }    
+    } else {
+        gameOver();
+    }        
+}
+
+//Creating a scoreboard + designing it
+function drawScore() {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "green";
+  ctx.fillText("Score: "+score, 8, 20);
+}
+function gameOver() {
+    document.location.reload();
+}
+//Is there collision? Apple = Score
+function checkApple() {
+    if ((x[0] == apple_x) && (y[0] == apple_y)) {
+        dots++;
+        locateApple();
+        score++;
+    }
+}
+//Move the snake
+function move() {
+    moveLock = false;
+    for (var z = dots; z > 0; z--) {
+        x[z] = x[(z - 1)];
+        y[z] = y[(z - 1)];
+    }
+    if (leftDirection) {
+        x[0] -= DOT_SIZE;
+    }
+    if (rightDirection) {
+        x[0] += DOT_SIZE;
+    }
+    if (upDirection) {
+        y[0] -= DOT_SIZE;
+    }
+    if (downDirection) {
+        y[0] += DOT_SIZE;
+    }
+}   
+
+//Check collision between snake and snake 
+function checkCollision() {
+    for (var z = dots; z > 0; z--) {
+        if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+            inGame = false;''
+        }
+    }
+    if (y[0] >= C_HEIGHT) {
+        inGame = false;
+    }
+    if (y[0] < 0) {
+       inGame = false;
+    }
+    if (x[0] >= C_WIDTH) {
+      inGame = false;
+    }
+    if (x[0] < 0) {
+      inGame = false;
+    }
+}
+//Where's the apple?
+function locateApple() {
+    var r = Math.floor(Math.random() * MAX_RAND);
+    apple_x = r * DOT_SIZE;
+    r = Math.floor(Math.random() * MAX_RAND);
+    apple_y = r * DOT_SIZE;
+     for (var i = 0; i < wall_x.length; i++)
+    if (apple_x == wall_x[i] && apple_y == wall_x[i] )
+        locateApple();
+}  
+
+function gameCycle() {
+    
+    if (inGame) {
+        checkWall();
+        checkApple();
+        checkCollision();
+        move();
+        doDrawing();
+        doWall();
+        drawScore();
+        setTimeout("gameCycle()", DELAY);
+    }
+}
+
+//Control keys
+onkeydown = function(e) {
+   
+    var key = e.keyCode;
+    if ((key == LEFT_KEY) && (!rightDirection) && (!moveLock)) {
+        moveLock = true;        
+        leftDirection = true;
+        upDirection = false;
+        downDirection = false;
+    }
+    if ((key == RIGHT_KEY) && (!leftDirection) && (!moveLock)) {
+        moveLock = true; 
+        rightDirection = true;
+        upDirection = false;
+        downDirection = false;
+    }
+    if ((key == UP_KEY) && (!downDirection) && (!moveLock)) {
+        moveLock = true; 
+        upDirection = true;
+        rightDirection = false;
+        leftDirection = false;
+    }
+    if ((key == DOWN_KEY) && (!upDirection) && (!moveLock)) {
+        moveLock = true; 
+        downDirection = true;
+        rightDirection = false;
+        leftDirection = false;    
+    }
+};   
+	
+
+
+</script>
+
+</body>
+</html>
