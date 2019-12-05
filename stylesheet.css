@@ -178,6 +178,14 @@ ul, li {
 }
 
 @media screen and (max-width: 1420px){
-	.topPageImg {display: none;
+	.topPageImg, #googleMapPic {display: none;}
+	#game {padding-top: 20em;}
+	#googleMapText {display: none;}
+	.footer {margin: 0;}
+	#topPageText {float: center; text-align: center; padding-left: 15px;}
 }
 
+@media screen and (max-width: 900px){
+	.navImg {display: none;}
+	.header {padding: 0}
+}
