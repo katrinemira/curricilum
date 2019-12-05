@@ -6,32 +6,26 @@
 </head>
 <body>
 
-	<div class="header" id="nav"">
+	<div class="header" id="nav">
 		<span id="navText"><a href="#topPage"><img src="pb.png" class="navImg" align="middle"></a></span>
 		<span id="navText"><a href="cv.html">ABOUT</a></span>
 		<span id="navText"><a href="#game">JAVASCRIPT</a></span>
 		<span id="navText"><a href="#googleMap">CONTACT</a></span>
 	</div>
-
 	<div id="topPage">
 		<span><img src="pb.png" class="topPageImg" align="middle"></span>
 		<span id="topPageText"><p>
 			<h3>< span > Introduction < /span ></h3> <br>
 			<span id="topPageFirst">M</span>y name is Katrine Lind, but my friends call me Mira. I’m 20 years old and I live in Aarhus - Denmark. <br><br>
-
 			I first discovered my passion when I was 11 years old, and my sister was having friends over. <br>My duty as her baby-sister was of course to tease her and her friends.<br>I kept deleting what they were writing on their word-document. One of her friends hit CTRL+Z and all lost was now back. <br>Back then I didn’t know what kind of witchcraft this was, but I knew I wanted in.
 		</p></span>
 	</div>
-
-
 	<!-- SNAKE GAME JAVASCRIPT -->
 	<div id="game">
 	<button id="startBtn" onclick="init()"><img src="playbtn.png"></button>
 	<canvas id="myCanvas" width="600" height="550"></canvas>
 	<img src="instructionsSnake.png" class="howToSnake">
 	</div>
-
-
 <div id="googleMap">
 	<span><img id="googleMapPic" src="googleMaps.png" align="middle"></span>
 	<span id="googleMapText"><p>
@@ -43,32 +37,21 @@
 		</ul>
 	</p></span>
 </div>
-
 <div class="footer">
 	<span>
 		<ul class="footer">
 			<li class="lifooter">I dont have anything else to show you atm.</li>
 			<li class="lifooter">But I also know how to make a footer if that helps</li>
 		</ul>
-
 	</span>
 </div>
 
-
-
-
-
-<!-- SCRIPT FOR SNAKE -->
+<!-- SCRIPT FOR SNAKE  & nav -->
 	<script type="text/JAVASCRIPT">
-
-
 //NAVBAR
 window.onscroll = function() {myFunction()};
-
 var header = document.getElementById("nav");
-
 var sticky = header.offsetTop;
-
 //Adding and removing sticky
 function myFunction() {
   if (window.pageYOffset > sticky) {
@@ -77,9 +60,6 @@ function myFunction() {
     header.classList.remove("sticky");
   }
 }
-
-
-
 	//SNAKE	
 	var canvas;
 	var ctx;
@@ -114,11 +94,9 @@ function myFunction() {
 	const FRAME_COUNT_NEW_LINE = 500;
 	var moveLock = true;
 		
-
 		function bush() {
 			ctx.dra
 		}
-
  
 		function doWall() {
 			if (inGame) {
@@ -136,8 +114,6 @@ function myFunction() {
        			 gameOver();
     		}
 		}
-
-
 		//Is there collision?
     function checkWall() {
         locateWall();
@@ -146,7 +122,6 @@ function myFunction() {
         gameOver();
     }
 }
-
 //Where is the wall?
     function locateWall() {
          if (score == 57) {
@@ -242,7 +217,6 @@ function myFunction() {
             }
                 return;
     }
-
     function init() {
     
     canvas = document.getElementById('myCanvas');
@@ -258,7 +232,6 @@ function myFunction() {
     setTimeout("gameCycle()", DELAY);
     
 }
-
 function loadImages() {
     
     head = new Image();
@@ -272,7 +245,6 @@ function loadImages() {
     wall = new Image();
     wall.src ='snakeBush.png';
 }
-
 //How does the snake look, when game=start?
 function createSnake() {
     dots = 3;
@@ -281,7 +253,6 @@ function createSnake() {
         y[z] = 50;
     }
 }
-
 function doDrawing() {
            ctx.clearRect(0, 0, C_WIDTH, C_HEIGHT);
     
@@ -299,7 +270,6 @@ function doDrawing() {
         gameOver();
     }        
 }
-
 //Creating a scoreboard + designing it
 function drawScore() {
   ctx.font = "16px Arial";
@@ -337,7 +307,6 @@ function move() {
         y[0] += DOT_SIZE;
     }
 }   
-
 //Check collision between snake and snake 
 function checkCollision() {
     for (var z = dots; z > 0; z--) {
@@ -368,7 +337,6 @@ function locateApple() {
     if (apple_x == wall_x[i] && apple_y == wall_x[i] )
         locateApple();
 }  
-
 function gameCycle() {
     
     if (inGame) {
@@ -382,7 +350,6 @@ function gameCycle() {
         setTimeout("gameCycle()", DELAY);
     }
 }
-
 //Control keys
 onkeydown = function(e) {
    
@@ -413,9 +380,6 @@ onkeydown = function(e) {
     }
 };   
 	
-
-
 </script>
-
 </body>
 </html>
